@@ -1,0 +1,73 @@
+Git Repository 
+==============
+
+The git repository of this project may be found at http://github.com/mpgirro/MarsRoverPictureCrawler.git
+
+Purpose
+=======
+
+mrpc (Mars Rover Picture Crawler) automatically downloads the pictures 
+sent by the Mars Rovers SPIRIT and OPPORTUNITY, which where launched in 
+2003 by NASA and arrived at Mars in 2004. Sent for a 90 day mission, they 
+succeeded their guaranteed lifetime for years and managed to sent enormous 
+amounts of data, including picture material. NASA releases those pictures 
+under a JPL Image Use Policy (a copy of the policy should have reached you
+among with this document. If not, you can find it here http://www.jpl.nasa.gov/imagepolicy/).
+
+Though OPPORTUNITY remains active to this day (July 2011), SPIRIT seems to 
+not have survived the last martian winter. On May 24, 2011, NASA announced 
+that efforts to communicate with the unresponsive rover had ended. Therefore,
+last official SPIRIT picture material is from Sol 2208 (a Sol is a martian 
+day, about 24h 37m 22.663s).
+
+Please also note that there are not necessarily pictures of every single Sol
+available. So do not wonder if the crawler is broken if there are some Sols
+missing.
+
+File name Code
+==============
+
+It may seem that the file names of the pictures are selected randomly, but 
+the 27 character file names hold a lot information about the spacecraft, 
+camera, date, time, product information, camera filters, etc. See the 
+'File name code' File or http://marsrover.nasa.gov/gallery/edr_filename_key.html 
+for more information.
+
+
+Requirements
+============
+
+Requires Python 2.6 or later (no Python 3 support) as well as BeautifulSoup
+(http://www.crummy.com/software/BeautifulSoup/). Make sure you have a 2.x 
+series version installed. 
+
+
+Running
+=======
+
+The python script need some command line arguments to work:
+
+1.	start_sol	
+
+	The Sol you want the crawler to start downloading from. 
+	If you do not have any pictures yet, you most likely want to start downloading at Sol 1.
+
+2.	end_sol			
+	
+	The Sol you want the crawler to stop downloading afterwards. 
+	If you want to download everything released until this day, 
+	you have to look up the current Sol amount since the Mission started. 
+
+3.	download_directory	
+
+	The path to the directory you want the crawler to download 
+	the pictures. This argument is optional. The default directory 
+	will be current_directory/mars_rovers/. Note that the crawler 
+	will make sub directory to sort the pictures by rover/sol/camera. 
+	
+4.	Run with: ./mrpc.py start_sol end_sol download_directory
+
+	If your python binary package is located somewhere else than the 
+	path given in the script header (or if you don't have a clue what 
+	this means ;-) run the script with: 
+	python2.6 mrpc.py start_sol end_sol download_directory

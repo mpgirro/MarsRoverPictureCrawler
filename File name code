@@ -1,0 +1,156 @@
+File name code
+
+This document can also be found at http://marsrover.nasa.gov/gallery/edr_filename_key.html
+
+Below is a chart that will help you decode the 27 character file 
+names associated with the Mars Exploration Rover mission. 
+There is enough info below to allow you to make 
+stereograms and construct color pictures and determine 
+when and where the raw images were taken. Enjoy!
+
+----
+
+Character   Function
+
+1    Spacecraft ID
+        1 = Opportunity
+        2 = Spirit
+
+2    Camera
+        F = Forward HAZCAM
+        R = Rear HAZCAM
+        N = NAVCAM
+        P = PANCAM
+        M = Microscopic Imager
+        E - EDLcam (Descent Imager)
+
+3 to 11   Spacecraft clock
+        This is the number of seconds since January 1, 2000 
+        at 11:58:55.816 UTC.
+
+12 to 14 Product type
+        Product types are differentiated as having camera-induced 
+        distortion removed (geometrically "linearized") or not 
+        removed (nominal), and, as being thumbnail-sized or not. 
+        Four special flag characters follow:
+
+        a) Beginning E - Type of EDR, which are raw with no camera 
+           model  linearization or radiometric correction. If no 
+           beginning E, then it is a Reduced Data Record (RDR).
+        b) Ending T - EDR or RDR that is Thumbnail -sized.
+        c) Ending L - If no beginning E , denotes an RDR that is 
+           Linearized, except for Thumbnail sized RDRs.
+        d) Ending N - If no beginning E , denotes an RDR that is 
+           ThumbNail-sized and Linearized .
+
+   Valid values for MER camera instrument input data products:
+      Data Product           Identifier
+      --------------------   ----------
+      full frame EDR            EFF
+      Sub-frame EDR             ESF
+      Downsampled EDR           EDN
+      Thumbnail EDR             ETH
+      Row Summed EDR            ERS
+      Column Summed EDR         ECS
+      Reference Pixels EDR      ERP
+      Histogram EDR             EHG
+
+15 to 16 Site number
+   Site location count (indicates rover's location).
+   Valid values: 00, 01, 02,...99, A0, A1,..., A9, AA, AB...etc.
+
+17 to 18 Drive number
+   Position-within-Site count (indicates rover's position within site)
+   Valid values: 00, 01, 02,...99, A0, A1,..., A9, AA, AB...etc.
+
+19 to 23 Command sequence number (one letter, 4 numbers)
+   Denotes a group of images that were all obtained within a 
+   single command sequence.
+
+   Valid values for character (position 1) in field:
+      C - Cruise
+      D - IDD & RAT
+      E - Engineering
+      F - Flight Software (Seq rejected)
+      G - (spare)
+      K - (spare)
+      M - Master (Surface only)
+      N - In-Situ instr. (APXS, MB, MI)
+      P - PMA & Remote Sensing instr. (Pancam, Navcam, Hazcam, MI, 
+          Mini-TES)
+      R - Rover Driving
+      S - Submaster
+      T - Test
+      W - Seq triggered by a Communications Window
+      X - Contingency
+      Y - (spare)
+      Z - SCM Seqs
+
+   Valid values for integers (positions 2 thru 5) in field:
+
+      0000 thru 4095 - Valid Sequence number, commanded by Ground
+
+   If P in character position 1:
+      0000 through 0499 - Misc. imaging setup/parm sequences
+      0500 through 0999 - Unallocated, for possible future use
+      1000 through 1499 - Hazcam sequences
+      1500 through 1999 - Navcam sequences
+      2000 through 2899 - Pancam sequences
+      2900 through 2999 - MI sequences
+      3000 through 3999 - Mini-TES sequences
+      4000 through 4095 - Misc. PMA actuation sequences (deploy, etc.)
+
+24    Camera eye
+                R = Right
+                L = Left
+      M - Monoscopic (non-stereo camera)
+      N - Not Applicable
+
+25    Camera Filter (PANCAM only, 0 otherwise)
+         LEFT CAMERA                     RIGHT CAMERA 
+         1 = 739nm (338nm bandpass)               1 = 436nm (37nm Short-pass) 
+         2 = 753nm (20nm bandpass)       2 = 754nm (20nm bandpass) 
+         3 = 673nm (16nm bandpass)       3 = 803nm (20nm bandpass) 
+         4 = 601nm (17nm bandpass)       4 = 864nm (17nm bandpass) 
+         5 = 535nm (20nm bandpass)       5 = 904nm (26nm bandpass) 
+         6 = 482nm (30nm bandpass)       6 = 934nm (25nm bandpass) 
+         7 = 432nm (32nm Short-pass)     7 = 1009nm (38nm Long-pass) 
+         8 = 440nm (20) Solar ND 5.0     8 = 880nm (20) Solar ND 5.0
+See Filter Wheels on Pancam
+
+    Microscopic Imager "Filter" positions:
+
+    1. MI window/cover closed (500-700 nm response)
+    2. MI window/cover open (400-700 nm response)
+
+26    Product producer
+      A - Arizona State University
+      C - Cornell University
+      F - USGS at Flagstaff
+      J - Johannes Gutenberg Univ. (Germany)
+      M - MIPL (OPGS) at JPL
+      N - NASA Ames Research (L. Edwards)
+      P - Max Plank Institute (Germany)
+      S - SOAS at JPL
+      U - University of Arizona
+      V - SSV Team (E. De Jong) at JPL
+      X - Other
+
+27    Product version number
+      Version identifier providing uniqueness for book keeping.
+
+      Valid values: 1, 2, 3, ... 9, A, B, ... Z
+
+Example:
+
+A photo with the file name 
+2P126471340EDN0000P2303L5M1.JPG would be from 
+Spirit (2), taken by the left PANCAM through the 
+535nm (green) filter. By matching the spacecraft times 
+(in this case 126471340) with other pictures that have a 
+similar time, you can find sets that were taken at the same time 
+of the day. Use similar sets to build stereograms and color 
+composites. This picture was downsampled (EDN) at 
+site 0 (00) and position 0 (00) (On the lander in this case!) 
+It was taken with command sequence P2303 for MIPL 
+(OPGS) at JPL and is version 1.
