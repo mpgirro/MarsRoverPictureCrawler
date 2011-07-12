@@ -76,8 +76,9 @@ def get_pictures(url):
     try:
         c = urllib2.urlopen( url )
     except HTTPError, e:
-    	print 'picture retrievel failed, reason: %s' %(e.reason)
-        return
+    	#print 'picture retrievel from %s failed because of %s' %(url,e)
+        return pics
+
     soup = BeautifulSoup( c.read() )
     links = soup('a')
     for link in links:
@@ -94,7 +95,7 @@ def load_pics( pics, savepath, rover, sol, cam):
 	# created and download information printed to the standard 
 	# outputstream. does not create directorys if pics is empty.
 
-    if pics is None:
+    if pics is None or len(pics) is 0:
         return 
     path = "%s%s/Sol %s/%s (%i img)" % (savepath, NAME_CODE[rover], sol, NAME_CODE[cam], len(pics) )
     system("mkdir -p '%s'" % (path) ) 
